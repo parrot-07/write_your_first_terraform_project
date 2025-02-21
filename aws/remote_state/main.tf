@@ -11,24 +11,33 @@
 terraform {
     backend "s3" {
     encrypt = true
+    region = "eu-west-1"
   }
+    required_providers {
+     aws={
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+}
+}
   required_version = ">= 0.12"
 }
 # example of 'partial configuration':
 # https://www.terraform.io/docs/backends/config.html#partial-configuration
 #
 # cat config/backend-dev.conf
-bucket  = "<account_id>-terraform-states"
-key     = "development/service-name.tfstate"
-encrypt = true
-region  = "ap-southeast-2"
-dynamodb_table = "terraform-lock"
+#bucket  = "<account_id>-terraform-states"
+#key     = "development/service-name.tfstate"
+#encrypt = true
+#region  = "ap-southeast-2"
+#dynamodb_table = "terraform-lock"
 
 # ------------------------------------------------------------------------------
 # CONFIGURE OUR AWS CONNECTION
 # ------------------------------------------------------------------------------
 
-provider "aws" {}
+provider "aws" {
+      region = "eu-north-1"
+}
 
 # ------------------------------------------------------------------------------
 # CREATE THE S3 BUCKET
