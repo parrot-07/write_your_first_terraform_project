@@ -13,9 +13,9 @@ provider "aws" {
   region  = "us-west-2"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+resource "aws_instance" "test_server_ec2" {
+  ami           = "ami-09a9858973b288bdd"
+  instance_type = "t3.micro"
 
   tags = {
     Name = "Terraform_Demo"
